@@ -1,0 +1,3 @@
+ADD_EXECUTABLE(game.exe "${CMAKE_CURRENT_SOURCE_DIR}/game.cpp")
+TARGET_LINK_LIBRARIES(game.exe ${SYS_LIBS})
+

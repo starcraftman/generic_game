@@ -1,0 +1,52 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+PROJECT(ProjectEuler C CXX)
+
+OPTION(GPROF "Build for profiling with gprof" OFF)
+
+# Variables
+SET(CMAKE_C_COMPILER, "/usr/bin/clang-10")
+SET(CMAKE_CXX_COMPILER "/usr/bin/clang++-10")
+# SET (CMAKE_C_COMPILER, "/usr/bin/gcc-10")
+# SET (CMAKE_CXX_COMPILER "/usr/bin/g++-10")
+IF(GPROF)
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
+ENDIF(GPROF)
+IF("${CMAKE_CXX_COMPILER_VERSION}" VERSION_LESS "4.8.0")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++98")
+ELSE("${CMAKE_CXX_COMPILER_VERSION}" VERSION_LESS "4.8.0")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+ENDIF("${CMAKE_CXX_COMPILER_VERSION}" VERSION_LESS "4.8.0")
+SET(DEBUG_FLAGS "-ggdb -Wall -Wextra -Winline -Wfatal-errors -pedantic")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_REENTRANT ${DEBUG_FLAGS}")
+MESSAGE("CXX Flags: ${CMAKE_CXX_FLAGS}")
+
+SET(BOOST_ROOT  "${CMAKE_SOURCE_DIR}/deps")
+SET(GTEST_ROOT  "${BOOST_ROOT}")
+SET(GMP_LIB     "${CMAKE_SOURCE_DIR}/deps/lib/libgmp.a")
+SET(UTIL_LIB    "util")
+
+FIND_PACKAGE(Boost 1.75.0 REQUIRED COMPONENTS chrono date_time filesystem regex system thread)
+FIND_PACKAGE(GTest 1.7 REQUIRED)
+FIND_PACKAGE(Threads REQUIRED)
+
+SET(SYS_LIBS
+    ${Boost_LIBRARIES}
+    ${GMP_LIB}
+    ${GTEST_BOTH_LIBRARIES}
+    ${CMAKE_THREAD_LIBS_INIT}
+)
+INCLUDE_DIRECTORIES(
+    ${Boost_INCLUDE_DIR}
+    ${GTEST_INCLUDE_DIRS}
+    "${CMAKE_CURRENT_SOURCE_DIR}/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/util"
+)
+
+ADD_SUBDIRECTORY(util)
+ADD_SUBDIRECTORY(src)
+# ADD_SUBDIRECTORY(test)
+# Debug
+#GET_CMAKE_PROPERTY(_variablenames variables)
+#FOREACH (_variablename ${_variablenames})
+    #MESSAGE(STATUS "${_variableName}=${${_variableName}}")
+#ENDFOREACH(_variablename)
