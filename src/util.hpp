@@ -7,8 +7,9 @@
 #include <set>
 #include <vector>
 #include <cmath>
+#include <random>
 
-namespace game {
+namespace util {
 
 /******************* Constants/Macros *********************/
 
@@ -17,7 +18,10 @@ namespace game {
 
 
 /************** Class & Func Declarations *****************/
+    auto d6() -> int {
+        return 1;
+    }
 
+}
 
 #endif /* _UTIL_HPP_ */
-
