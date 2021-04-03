@@ -11,5 +11,5 @@ int main(int argc, char *argv[]){
     }
 
     cout << "Generic game here." << endl;
-    cout << "Rolled: " << util::d6() << endl;
+    cout << "Rolled a d20: " << util::roll_d20() << endl;
 }
