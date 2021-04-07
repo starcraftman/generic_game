@@ -33,6 +33,8 @@ FLAGS = [
     '/usr/include',
     '-isystem',
     '/usr/local/include',
+    '-isystem',
+    '/usr/include/SDL',
     '-I',
     os.path.join(CPP_ROOT, 'deps/include'),
     '-I',
