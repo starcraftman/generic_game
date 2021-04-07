@@ -18,3 +18,7 @@ I don't have a big plan at the moment but will see where it goes.
     - Some sort of branching text system for dialogues.
     - Turn based combat system.
     - Not considering a graphics engine at this point, perhaps purely cli or simple graphics system.
+
+# Cavestory Playlist
+
+https://www.youtube.com/watch?v=IufkC1IRY2Q&list=PL006xsVEsbKjSKBmLu1clo85yLrwjY67X&index=1
