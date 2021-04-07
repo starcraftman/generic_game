@@ -24,37 +24,37 @@ namespace util {
 
 
 /************** Class & Func Declarations *****************/
-    auto roll_d4() -> int {
+    auto inline roll_d4() -> int {
         static std::uniform_int_distribution<int> dis(1, 4);
         return dis(generator);
     }
 
-    auto roll_d6() -> int {
+    auto inline roll_d6() -> int {
         static std::uniform_int_distribution<int> dis(1, 6);
         return dis(generator);
     }
 
-    auto roll_d8() -> int {
+    auto inline roll_d8() -> int {
         static std::uniform_int_distribution<int> dis(1, 8);
         return dis(generator);
     }
 
-    auto roll_d10() -> int {
+    auto inline roll_d10() -> int {
         static std::uniform_int_distribution<int> dis(1, 10);
         return dis(generator);
     }
 
-    auto roll_d12() -> int {
+    auto inline roll_d12() -> int {
         static std::uniform_int_distribution<int> dis(1, 12);
         return dis(generator);
     }
 
-    auto roll_d20() -> int {
+    auto inline roll_d20() -> int {
         static std::uniform_int_distribution<int> dis(1, 20);
         return dis(generator);
     }
 
-    auto roll_d100() -> int {
+    auto inline roll_d100() -> int {
         static std::uniform_int_distribution<int> dis(1, 100);
         return dis(generator);
     }

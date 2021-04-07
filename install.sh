@@ -2,6 +2,7 @@
 # Run this from the root of this project.
 URL_GTEST="https://github.com/google/googletest/archive/refs/tags/release-1.10.0.tar.gz"
 URL_BOOST="https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.gz"
+URL_SDL20="https://www.libsdl.org/release/SDL2-2.0.14.tar.gz"
 TOP=$(pwd)
 DEPS_FOLDER="$(realpath ./deps)"
 
@@ -45,12 +46,30 @@ build_boost() {
     command rm -rf "$arc" "$folder"
 }
 
+build_sdl20() {
+    local arc
+    local folder
+    arc="$(basename $URL_SDL20)"
+    folder="${arc%.tar.gz}"
+
+    wget $URL_SDL20
+    tar -xvf "$arc"
+    cd "$folder"
+
+    ./configure --prefix="$DEPS_FOLDER"
+    make install
+
+    cd $DEPS_FOLDER
+    command rm -rf "$arc" "$folder"
+}
+
 entry() {
     mkdir -p "$DEPS_FOLDER/lib" "$DEPS_FOLDER/include"
     cd "$DEPS_FOLDER"
 
     build_google_test
     build_boost
+    # build_sdl20
 
     cd $TOP
 }
